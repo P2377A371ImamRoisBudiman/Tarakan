@@ -1,24 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gracias/display/displaydua.dart';
 import 'package:gracias/view/clock.dart';
-import 'package:http/http.dart';
 import 'package:slide_digital_clock/slide_digital_clock.dart';
 import 'package:intl/intl.dart';
 
-import '../model/acara-modal.dart';
-
-class HomPage extends StatefulWidget {
-  const HomPage({Key? key}) : super(key: key);
+class displayDua extends StatefulWidget {
+  const displayDua({super.key});
 
   @override
-  State<HomPage> createState() => _HomPageState();
+  State<displayDua> createState() => _displayDuaState();
 }
 
-class _HomPageState extends State<HomPage> {
-  // ignore: prefer_typing_uninitialized_variables
-  var size, height, width;
+var size, height, width;
 
+class _displayDuaState extends State<displayDua> {
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -29,7 +27,7 @@ class _HomPageState extends State<HomPage> {
         // ignore: prefer_const_constructors
         decoration: BoxDecoration(
             image: const DecorationImage(
-                image: AssetImage('assets/images/background_gracias.png'),
+                image: AssetImage('assets/gif/background.gif'),
                 fit: BoxFit.fill)),
         width: width / 1,
         height: height / 1,
@@ -74,12 +72,9 @@ class _HomPageState extends State<HomPage> {
                         children: [
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return displayDua();
-                              }));
+                              Navigator.pop(context);
                             },
-                            child: Text('Display Dua'),
+                            child: Text('KEMBALI !!!'),
                           ),
                           ElevatedButton(
                             onPressed: () {},
@@ -157,29 +152,45 @@ class _HomPageState extends State<HomPage> {
 //Kolom Logo Tarakan End
 //Expanded Grid Card Start
             Expanded(
-              flex: 2,
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  AcaraEvent(
-                    get: const [],
-                  ),
-                ],
+              child: Container(
+                color: const Color.fromRGBO(240, 240, 240, 90),
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  padding: const EdgeInsets.all(16.0),
+                  childAspectRatio: 8.0 / 9.0,
+                  // TODO: Build a grid of cards (102)
+                  children: <Widget>[
+                    Card(
+                      clipBehavior: Clip.antiAlias,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          AspectRatio(
+                            aspectRatio: 18.0 / 11.0,
+                            child: Image.asset('assets/images/logos.png'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(
+                                16.0, 12.0, 16.0, 8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text('Title'),
+                                const SizedBox(height: 8.0),
+                                Text('Secondary Text'),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
 //Expanded Grid Card End
           ],
         ),
-      ),
-      floatingActionButton: ElevatedButton(
-        onPressed: () {},
-        child: FittedBox(
-            child: Column(
-          children: [
-            Icon(CupertinoIcons.add),
-            Text("Tambah Kegiatan"),
-          ],
-        )),
       ),
     );
   }
