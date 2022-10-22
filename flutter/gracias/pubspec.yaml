@@ -41,6 +41,10 @@ dependencies:
   provider: ^6.0.4
   slide_digital_clock: ^1.0.2
   intl: ^0.17.0
+  flutter_native_splash: ^2.2.11
+  uuid: ^3.0.5
+  http: ^0.13.4
+  percent_indicator: ^4.2.2
 
 
 dev_dependencies:
@@ -69,6 +73,7 @@ flutter:
   assets:
     - assets/images/tarakanlogo.png
     - assets/images/background_gracias.png
+    - assets/gif/background.gif
     - assets/images/logos.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
